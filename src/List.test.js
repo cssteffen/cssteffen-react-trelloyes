@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import List from "./List";
-//import renderer from "react-test-renderer"; //takes snapshot
+import renderer from "react-test-renderer"; //takes snapshot
 
 //  ReactDOM.render(<List-cards />, section);
 
@@ -19,7 +19,10 @@ it("renders the UI as expected", () => {
   const tree = renderer
     .create(
       <List
-        cards={[(key = "1"), (title = "Title"), (content = "Lorem Ipsum")]}
+        cards={[
+          { id: "a", title: "First card", content: "lorem ipsum Lum" },
+          { id: "b", title: "Second card", content: "lorem ipsum" }
+        ]}
       />
     )
     .toJSON();
