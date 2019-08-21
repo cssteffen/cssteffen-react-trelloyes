@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import List from "./List";
 import renderer from "react-test-renderer"; //takes snapshot
 
-//  ReactDOM.render(<List-cards />, section);
-
 //SMOKE TEST//
 it("renders without crashing", () => {
   const section = document.createElement("section");

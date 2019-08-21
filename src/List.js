@@ -21,24 +21,41 @@ import React from "react";
 import Card from "./Card";
 import "./List.css";
 
-class List extends React.Component {
-  render() {
-    return (
-      <section className="List">
-        <header className="List-header">
-          <h2>{this.props.header}</h2>
-        </header>
-        <div className="List-cards">
-          {this.props.cards.map(card => (
-            <Card key={card.id} title={card.title} content={card.content} />
-          ))}
-          <button type="button" className="List-add-button">
-            + Add Random Card
-          </button>
-        </div>
-      </section>
-    );
-  }
+//MUST ADD this for props to be defined - WHY MUST it CHANGE?? HOW, WHY does this define the prop?
+export default function List(props) {
+  //class List extends React.Component {
+  //  render() {
+  return (
+    <section className="List">
+      <header className="List-header">
+        <h2>{props.header}</h2>
+      </header>
+      <div className="List-cards">
+        {props.cards.map(card => (
+          <Card
+            key={card.id}
+            id={card.id} // why are we adding this??
+            title={card.title}
+            content={card.content}
+            onClickDelete={props.onClickDelete}
+          />
+        ))}
+        <button
+          type="button"
+          className="List-add-button"
+          onClick={() => props.onClickAdd(props.id)} //why using the id??
+        >
+          + Add Random Card
+        </button>
+      </div>
+    </section>
+  );
 }
+//}
 
-export default List;
+List.defaultProps = {
+  // What does this do??
+  onClick: () => {}
+};
+
+//export default List;
